@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+// Функція для розрахунку мінімальної вартості квитків
+int calculateMinCost(int n, int m, int a, int b, int k, int c) {
+    int individualTicketsCost = n * a * m;
+    int unlimitedIndividualTicketsCost = n * b * m;
+    int groupTicketCost = (n / k) * c * m + (n % k) * a * m;
+
+    return min(individualTicketsCost, min(unlimitedIndividualTicketsCost, groupTicketCost));
+}
+
+int main() {
+    // Введення вхідних даних
+    int n, m, a, b, k, c;
+    cout << "Введіть кількість людей (n): ";
+    cin >> n;
+    cout << "Введіть кількість поїздок на кожну людину (m): ";
+    cin >> m;
+    cout << "Введіть вартість квитка на одну поїздку (a): ";
+    cin >> a;
+    cout << "Введіть вартість безлімітного квитка на одну людину (b): ";
+    cin >> b;
+    cout << "Введіть кількість людей у групі для групового квитка (k): ";
+    cin >> k;
+    cout << "Введіть вартість групового безлімітного квитка (c): ";
+    cin >> c;
+
+    // Виклик функції та виведення результатів
+    int minCost = calculateMinCost(n, m, a, b, k, c);
+    cout << "Мінімальна сумарна вартість квитків: " << minCost << " гривень" << endl;
+
+    return 0;
+}
